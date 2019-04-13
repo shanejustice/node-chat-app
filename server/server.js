@@ -16,6 +16,17 @@ io.on('connection', function(socket){
 	console.log('new user connected');
 
 
+	socket.emit('newMessage', {
+		from: 'shane@blink.com',
+		text: 'Hey',
+		createdAt: 123
+	});
+
+	socket.on('createMessage', function(message){
+		console.log('Message Created', message);
+
+	}); 
+
 	socket.on('disconnect', function(){
 	console.log('User was disconnected');
 });
